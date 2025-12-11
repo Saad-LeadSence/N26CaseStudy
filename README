@@ -1,0 +1,20 @@
+N26 Case Study – Product Pricing Solution (Salesforce)
+
+A metadata-driven pricing engine for N26 implemented with Apex, fflib selectors, REST API, and LWC.
+The solution follows clean-code and OOP standards used by N26: modular, testable, secure, and easy to extend.
+
+🚀 Overview
+
+This solution retrieves N26 customer product pricing (monthly fee, ATM fee %, replacement card fee) based on:
+
+Case → Contact → Product + Home Country
+
+Custom Metadata (Standard_DE, Black_FR, etc.)
+
+It exposes pricing through:
+
+A Lightning Web Component (displayed on the Case page)
+
+A REST API (/v1/contact?uuid=<uuid>)
+
+Both use the same centralized service for logic and FLS/CRUD checks.
