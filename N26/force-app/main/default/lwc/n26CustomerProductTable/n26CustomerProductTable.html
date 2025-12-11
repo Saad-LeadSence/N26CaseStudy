@@ -1,0 +1,55 @@
+<template>
+  <lightning-card
+    title="Customer Product Information"
+    icon-name="custom:custom14"
+  >
+    <!-- Data available -->
+    <template if:true={hasData}>
+      <div class="slds-p-horizontal_medium slds-p-vertical_small">
+        <p class="slds-text-title_caps slds-m-bottom_small">
+          {productInfo.planType} — {productInfo.country}
+        </p>
+
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+          <tbody>
+            <tr>
+              <th scope="row" class="slds-text-title_caps slds-text-color_weak">
+                Monthly Fee
+              </th>
+              <td>{productInfo.monthlyFeeCurrency} {productInfo.monthlyFee}</td>
+            </tr>
+            <tr>
+              <th scope="row" class="slds-text-title_caps slds-text-color_weak">
+                ATM Fee (other currencies)
+              </th>
+              <td>{productInfo.atmFeePercent}%</td>
+            </tr>
+            <tr>
+              <th scope="row" class="slds-text-title_caps slds-text-color_weak">
+                Card Replacement Fee
+              </th>
+              <td>
+                {productInfo.cardReplacementCurrency}
+                {productInfo.cardReplacementFee}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </template>
+
+    <!-- Error state -->
+    <template if:true={error}>
+      <div class="slds-p-around_medium slds-text-color_error">
+        {errorMessage}
+      </div>
+    </template>
+
+    <!-- Empty state (no data, no error) -->
+    <template if:true={showEmptyState}>
+      <div class="slds-p-around_medium slds-text-color_weak">
+        No product information available for this case.
+      </div>
+    </template>
+  </lightning-card>
+</template>
