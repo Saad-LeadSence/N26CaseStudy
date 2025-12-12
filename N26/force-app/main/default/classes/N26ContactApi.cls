@@ -64,7 +64,7 @@ global with sharing class N26ContactApi {
       }
 
       // Fetch case and pricing from Selectors
-      Id caseId = getAnyCaseForContact(c.Id);
+      Id caseId = getCaseForContact(c.Id);
       N26ProductInfoService.ProductInfoDTO dto =
         (caseId != null)
           ? N26ProductInfoService.getProductInfoForCase(caseId)
@@ -110,7 +110,7 @@ global with sharing class N26ContactApi {
   /**
    * @description Returns any Case Id for a Contact using Case Selector.
    */
-  private static Id getAnyCaseForContact(Id contactId) {
+  private static Id getCaseForContact(Id contactId) {
     if (contactId == null) return null;
 
     Case c = caseSelector().selectAnyCaseForContact(contactId);
